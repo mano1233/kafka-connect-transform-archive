@@ -68,7 +68,7 @@ public class Archive<R extends ConnectRecord<R>> implements Transformation<R> {
     archiveValue.put("topic", r.topic());
     archiveValue.put("timestamp", r.timestamp());
 
-    return r.newRecord(r.topic(), r.kafkaPartition(), null, null, null, archiveValue, r.timestamp());
+    return r.newRecord(r.topic(), r.kafkaPartition(), r.keySchema(), r.key(), r.valueSchema(), archiveValue, r.timestamp());
   }
 
   @Override
